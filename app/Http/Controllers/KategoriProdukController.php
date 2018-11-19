@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\KategoriProduk;
 
 class KategoriProdukController extends Controller
 {
@@ -13,7 +14,8 @@ class KategoriProdukController extends Controller
      */
     public function index()
     {
-        //
+        $data_kategori = KategoriProduk::all()->toArray();
+		return view('kategori.index', compact('data_kategori'));
     }
 
     /**
@@ -23,7 +25,7 @@ class KategoriProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori.create');
     }
 
     /**
