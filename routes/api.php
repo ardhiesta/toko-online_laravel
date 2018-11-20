@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Produk;
+use App\Http\Resources\ProdukCollection;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,8 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/produk', function () {
+    return new ProdukCollection(Produk::all());
 });

@@ -2,18 +2,33 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Laravel 5.5 CRUD Tutorial</title>
+		<title>Toko Online</title>
 		<link rel="stylesheet" href="{{asset('css/app.css')}}">
 	</head>
 	<body>
 		<div class="container">
 			<h2>Membuat Kategori Produk</h2><br />
-			<form method="post">
+			@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div><br />
+			@endif
+			@if (\Session::has('success'))
+				<div class="alert alert-success">
+					<p>{{ \Session::get('success') }}</p>
+				</div><br />
+			@endif
+			<form method="post" action="{{url('kategori')}}">
+			{{csrf_field()}}
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-4">
-						<label for="name">Nama kategori:</label>
-						<input type="text" class="form-control" name="name">
+						<label for="nama_kategori">Nama kategori:</label>
+						<input type="text" class="form-control" name="nama_kategori">
 					</div>
 				</div>
 				<!--div class="row">

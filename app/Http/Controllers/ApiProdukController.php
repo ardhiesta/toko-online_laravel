@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\KategoriProduk;
+user App\Produk;
 
-class KategoriProdukController extends Controller
+class ApiProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class KategoriProdukController extends Controller
      */
     public function index()
     {
-        $data_kategori = KategoriProduk::all()->toArray();
+        $data_produk = Produk::all()->toArray();
 		return view('kategori.index', compact('data_kategori'));
     }
 
@@ -25,7 +25,7 @@ class KategoriProdukController extends Controller
      */
     public function create()
     {
-        return view('kategori.create');
+        //
     }
 
     /**
@@ -36,10 +36,7 @@ class KategoriProdukController extends Controller
      */
     public function store(Request $request)
     {
-		$kategori = new KategoriProduk;
-        $kategori->nama_kategori = $request->nama_kategori;
-        $kategori->save();
-        return back()->with('success', 'Kategori produk telah ditambahkan');
+        //
     }
 
     /**
