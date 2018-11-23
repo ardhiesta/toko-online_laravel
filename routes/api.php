@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Produk;
+use App\KategoriProduk;
 use App\Http\Resources\ProdukCollection;
+use App\Http\Resources\KategoriCollection;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/produk', function () {
     return new ProdukCollection(Produk::all());
+});
+
+Route::get('/kategori', function () {
+    return new KategoriCollection(KategoriProduk::all());
 });
