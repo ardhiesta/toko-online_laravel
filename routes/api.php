@@ -29,6 +29,8 @@ Route::get('/produk', 'ApiProdukController@index');
 
 Route::get('/produk/kategori/{id}', 'ApiProdukController@showByKategori');
 
+Route::get('/produk/nama/{nama}', 'ApiProdukController@showByNama');
+
 Route::get('/produk/{id}', 'ApiProdukController@showById');
 
 Route::get('/kategori', 'ApiKategoriProdukController@index');

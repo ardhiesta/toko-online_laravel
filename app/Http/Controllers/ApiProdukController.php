@@ -56,6 +56,12 @@ class ApiProdukController extends Controller
         $data_produk = Produk::where('id_kategori', $id)->get();
 		return $data_produk; //view('kategori.index', compact('data_kategori'));
     }
+    
+    public function showByNama($nama)
+    {
+        $data_produk = Produk::where('nama_produk', 'LIKE', '%'.$nama.'%')->get();
+		return $data_produk; 
+    }
 
     /**
      * Show the form for editing the specified resource.
