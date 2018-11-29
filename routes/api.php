@@ -21,10 +21,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/produk', function () {
+/*Route::get('/produk', function () {
     return new ProdukCollection(Produk::all());
-});
+});*/
 
-Route::get('/kategori', function () {
+Route::get('/produk', 'ApiProdukController@index');
+
+Route::get('/produk/kategori/{id}', 'ApiProdukController@showByKategori');
+
+Route::get('/produk/{id}', 'ApiProdukController@showById');
+
+Route::get('/kategori', 'ApiKategoriProdukController@index');
+
+/*Route::get('/kategori', function () {
     return new KategoriCollection(KategoriProduk::all());
-});
+});*/

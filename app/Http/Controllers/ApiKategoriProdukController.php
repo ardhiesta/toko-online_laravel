@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Produk;
+use App\KategoriProduk;
 
-class ApiProdukController extends Controller
+class ApiKategoriProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ApiProdukController extends Controller
      */
     public function index()
     {
-        $data_produk = Produk::all()->toArray();
-		return $data_produk; //view('kategori.index', compact('data_kategori'));
+        $data_kategori = KategoriProduk::all()->toArray();
+		return $data_kategori;
     }
 
     /**
@@ -45,16 +45,9 @@ class ApiProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showById($id)
+    public function show($id)
     {
-        $data_produk = Produk::where('id_produk', $id)->get();
-		return $data_produk; 
-    }
-    
-    public function showByKategori($id)
-    {
-        $data_produk = Produk::where('id_kategori', $id)->get();
-		return $data_produk; //view('kategori.index', compact('data_kategori'));
+        //
     }
 
     /**
