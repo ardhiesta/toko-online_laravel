@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produk;
 
 class ProdukController extends Controller
 {
@@ -13,7 +14,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        $data_produk = Produk::all()->toArray();
+		return view('produk.index', compact('data_produk'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('produk.create');
     }
 
     /**
@@ -34,7 +36,14 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produk = new Produk;
+        $produk->nama_produk = $request->nama_produk;
+        $produk->id_kategori = $request->id_kategori;
+        $produk->harga = $request->harga;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->gambar = $request->gambar;
+        $produk->save();
+        return back()->with('success', 'Produk telah ditambahkan');
     }
 
     /**
@@ -56,7 +65,8 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produk = Produk::find($id);
+		return view('produk.edit',compact('produk','id'));
     }
 
     /**
@@ -79,6 +89,8 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produk = Produk::find($id);
+		$produk->delete();
+		return redirect('produk')->with('success','Produk berhasil dihapus');
     }
 }

@@ -17,6 +17,11 @@ class KategoriProdukController extends Controller
         $data_kategori = KategoriProduk::all()->toArray();
 		return view('kategori.index', compact('data_kategori'));
     }
+    
+    public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
     /**
      * Show the form for creating a new resource.
@@ -61,7 +66,8 @@ class KategoriProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategori = KategoriProduk::find($id);
+		return view('kategori.edit',compact('kategori','id'));
     }
 
     /**
@@ -73,7 +79,13 @@ class KategoriProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kategori = KategoriProduk::find($id);
+		$this->validate(request(), [
+			'nama_kategori' => 'required'
+		]);
+		$kategori->nama_kategori = $request->get('nama_kategori');
+		$kategori->save();
+		return redirect('kategori')->with('success','Kategori Produk berhasil diupdate');
     }
 
     /**
@@ -84,6 +96,8 @@ class KategoriProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$kategori = KategoriProduk::find($id);
+		$kategori->delete();
+		return redirect('kategori')->with('success','Kategori Produk berhasil dihapus');
     }
 }
