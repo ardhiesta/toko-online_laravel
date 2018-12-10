@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-2">
-						<button type="submit" class="btn btn-success">Tambah Produk</button>
+						<button type="submit" class="btn btn-success">Tambah Kategori Produk</button>
 					</div>
 					<div class="form-group col-md-2">
 						<a href="{{ URL::previous() }}" class="btn btn-primary">Cancel</a>

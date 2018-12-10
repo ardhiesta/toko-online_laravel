@@ -17,7 +17,8 @@ class ProdukController extends Controller
     public function index()
     {
         $data_produk = Produk::simplePaginate(10);//all()->toArray();
-		return view('produk.index', compact('data_produk'));
+        $data_kategori = KategoriProduk::all();
+		return view('produk.index', compact('data_produk', 'data_kategori'));
     }
 
     public function __construct()
@@ -55,7 +56,7 @@ class ProdukController extends Controller
             $file->move('uploads', $file->getClientOriginalName());
             $produk->gambar = $file->getClientOriginalName();
             $produk->save();
-            return back()->with('success', 'Produk telah ditambahkan');
+            return redirect('produk')->with('success', 'Produk telah ditambahkan');
         }
     }
 
@@ -96,17 +97,21 @@ class ProdukController extends Controller
 		// $this->validate(request(), [
 		// 	'nama_kategori' => 'required'
 		// ]);
-		$produk->nama_kategori = $request->get('nama_kategori');
-		$produk->id_kategori = $request->id_kategori;
-        $produk->harga = $request->harga;
-        $produk->deskripsi = $request->deskripsi;
+        $produk->nama_produk = $request->get('nama_produk');
+        $data_kategori = KategoriProduk::find($request->get('id_kategori'));
+        // $produk->id_kategori = $request->get('id_kategori');
+        // $produk->kategori->id_kategori = $data_kategori->id_kategori;
+        // $produk->kategori->nama_kategori = $data_kategori->nama_kategori;
+        $produk->kategori()->associate($data_kategori);
+        $produk->harga = $request->get('harga');
+        $produk->deskripsi = $request->get('deskripsi');
         if(Input::hasFile('gambar')){
             $file = Input::file('gambar');
             $file->move('uploads', $file->getClientOriginalName());
             $produk->gambar = $file->getClientOriginalName();
         }
         $produk->save();
-		return redirect('kategori')->with('success','Kategori Produk berhasil diupdate');
+		return redirect('produk')->with('success','Data produk berhasil diupdate');
     }
 
     /**

@@ -20,7 +20,8 @@
 				</div><br />
 			@endif
 			<form method="post" action="{{action('ProdukController@update',$id)}}" enctype="multipart/form-data">
-			{{csrf_field()}}
+				{{csrf_field()}}
+				<input name="_method" type="hidden" value="PATCH">
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-4">
@@ -67,7 +68,7 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-2">
-						<button type="submit" class="btn btn-success">Tambah Produk</button>
+						<button type="submit" class="btn btn-success">Simpan Data Produk</button>
 					</div>
 					<div class="form-group col-md-2">
 						<a href="{{ URL::previous() }}" class="btn btn-primary">Cancel</a>

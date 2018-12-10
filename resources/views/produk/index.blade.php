@@ -31,6 +31,7 @@
 				{{ $data_produk->links() }}
 			</div>
 		</div>
+		<br />
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -48,7 +49,7 @@
 				<tr>
 					<td>{{$produk['id_produk']}}</td>
 					<td>{{$produk['nama_produk']}}</td>
-					<td>{{$produk['id_kategori']}}</td>
+					<td>{{$produk->kategori->nama_kategori}}</td>
 					<td>{{$produk['harga']}}</td>
 					<td>{{$produk['deskripsi']}}</td>
 					<td>{{$produk['gambar']}}</td>

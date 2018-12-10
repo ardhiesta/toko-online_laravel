@@ -44,7 +44,7 @@ class KategoriProdukController extends Controller
 		$kategori = new KategoriProduk;
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
-        return back()->with('success', 'Kategori produk telah ditambahkan');
+        return redirect('kategori')->with('success', 'Kategori produk telah ditambahkan');
     }
 
     /**

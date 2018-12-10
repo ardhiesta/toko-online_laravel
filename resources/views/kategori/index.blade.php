@@ -12,12 +12,13 @@
 		@endif
 		<div class="row">
 			<div class="col-sm">
-				<a href="{{action('KategoriProdukController@create')}}" class="btn btn-primary">Tambah Produk</a>
+				<a href="{{action('KategoriProdukController@create')}}" class="btn btn-primary">Tambah Kategori</a>	
 			</div>
 			<div class="col-sm">
 				{{ $data_kategori->links() }}
 			</div>
 		</div>
+		<br />
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -43,6 +44,11 @@
 					</td>
 				</tr>
 				@endforeach
+				<!-- <script>
+					$(".delete").on("submit", function(){
+						return confirm("Anda yakin menghapus data ini?");
+					});
+				</script> -->
 			</tbody>
 		</table>
 		</div>
