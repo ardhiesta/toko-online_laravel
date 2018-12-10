@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Toko Online</title>
-		<link rel="stylesheet" href="{{asset('css/app.css')}}">
-	</head>
-	<body>
+@extends('layouts.app')
+
+@section('content')
 		<div class="container">
-			<h2>Membuat Produk Baru</h2><br />
+			<h2>Membuat Produk Baru</h2>
+			<!-- <br /> -->
 			@if ($errors->any())
 				<div class="alert alert-danger">
 					<ul>
@@ -15,14 +11,15 @@
 						<li>{{ $error }}</li>
 						@endforeach
 					</ul>
-				</div><br />
+				</div>
+				<!-- <br /> -->
 			@endif
 			@if (\Session::has('success'))
 				<div class="alert alert-success">
 					<p>{{ \Session::get('success') }}</p>
 				</div><br />
 			@endif
-			<form method="post" action="{{url('produk')}}">
+			<form method="post" action="{{url('produk')}}" enctype="multipart/form-data">
 			{{csrf_field()}}
 				<div class="row">
 					<div class="col-md-4"></div>
@@ -34,8 +31,13 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-4">
-						<label for="id_kategori">ID kategori:</label>
-						<input type="text" class="form-control" name="id_kategori">
+						<label for="id_kategori">Kategori:</label>
+						<!-- <input type="text" class="form-control" name="id_kategori"> -->
+						<select name="id_kategori" id="id_kategori" class="form-control input-sm">
+						@foreach($data_kategori as $kategori)
+							<option value="{{ $kategori->id_kategori }}">{{ $kategori->nama_kategori }}</option>
+						@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -49,24 +51,25 @@
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-4">
 						<label for="deskripsi">Deskripsi:</label>
-						<input type="text" class="form-control" name="deskripsi">
+						<textarea class="form-control" name="deskripsi" rows="3"></textarea>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="form-group col-md-4">
 						<label for="gambar">Gambar:</label>
-						<input type="text" class="form-control" name="gambar">
+						<input type="file" class="form-control" name="gambar" id="gambar">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-4"></div>
-					<div class="form-group col-md-4">
-						<button type="submit" class="btn btn-success"
-						left:38px">Tambah Produk</button>
+					<div class="form-group col-md-2">
+						<button type="submit" class="btn btn-success">Tambah Produk</button>
+					</div>
+					<div class="form-group col-md-2">
+						<a href="{{ URL::previous() }}" class="btn btn-primary">Cancel</a>
 					</div>
 				</div>
 			</form>
 		</div>
-	</body>
-</html>
+@endsection

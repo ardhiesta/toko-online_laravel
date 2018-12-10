@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Index Page</title>
-		<link rel="stylesheet" href="{{asset('css/app.css')}}">
-	</head>
-	<body>
+@extends('layouts.app')
+
+@section('content')
 		<div class="container">
-		<br />
+		<h2>Data Kategori Produk</h2>
+		<!-- <br /> -->
 		@if (\Session::has('success'))
 		<div class="alert alert-success">
 			<p>{{ \Session::get('success') }}</p>
-		</div><br />
+		</div>
+		<!-- <br /> -->
 		@endif
+		<div class="row">
+			<div class="col-sm">
+				<a href="{{action('KategoriProdukController@create')}}" class="btn btn-primary">Tambah Produk</a>
+			</div>
+			<div class="col-sm">
+				{{ $data_kategori->links() }}
+			</div>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -41,5 +46,4 @@
 			</tbody>
 		</table>
 		</div>
-	</body>
-</html>
+@endsection

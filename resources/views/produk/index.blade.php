@@ -1,18 +1,36 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Index Page</title>
-		<link rel="stylesheet" href="{{asset('css/app.css')}}">
-	</head>
-	<body>
+@extends('layouts.app')
+
+@section('content')
 		<div class="container">
-		<br />
+		<h2>Data Produk</h2>
+		<!-- <br /> -->
 		@if (\Session::has('success'))
 		<div class="alert alert-success">
 			<p>{{ \Session::get('success') }}</p>
-		</div><br />
+		</div>
+		<!-- <br /> -->
 		@endif
+		<div class="row">
+			<div class="col-sm">
+				<a href="{{action('ProdukController@create')}}" class="btn btn-primary">Tambah Produk</a>
+			</div>
+			<!-- <div class="col-sm">
+				<form action="/search" method="POST" role="search">
+					{{ csrf_field() }}
+					<div class="input-group">
+						<input type="text" class="form-control" name="q"
+							placeholder="Cari produk"> <span class="input-group-btn">
+							<button type="submit" class="btn btn-default">
+								<span class="glyphicon glyphicon-search">Submit</span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div> -->
+			<div class="col-sm">
+				{{ $data_produk->links() }}
+			</div>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -49,5 +67,4 @@
 			</tbody>
 		</table>
 		</div>
-	</body>
-</html>
+@endsection

@@ -14,7 +14,7 @@ class KategoriProdukController extends Controller
      */
     public function index()
     {
-        $data_kategori = KategoriProduk::all()->toArray();
+        $data_kategori = KategoriProduk::simplePaginate(10);//::all()->toArray();
 		return view('kategori.index', compact('data_kategori'));
     }
     
