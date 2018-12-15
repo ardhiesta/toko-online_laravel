@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produk;
+use App\KategoriProduk;
 
 class ApiProdukController extends Controller
 {
@@ -14,8 +15,10 @@ class ApiProdukController extends Controller
      */
     public function index()
     {
-        $data_produk = Produk::all()->toArray();
-		return $data_produk; //view('kategori.index', compact('data_kategori'));
+        $data_produk = Produk::with('kategori')->get()->toArray();
+        // $kategori = KategoriProduk::with('quotes')->find($id)->quotes;
+        return $data_produk; 
+        // return $data_produk[0]['nama_produk'];
     }
 
     /**
