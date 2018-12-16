@@ -50,19 +50,19 @@ class ApiProdukController extends Controller
      */
     public function showById($id)
     {
-        $data_produk = Produk::where('id_produk', $id)->get();
+        $data_produk = Produk::with('kategori')->where('id_produk', $id)->get();
 		return $data_produk; 
     }
     
     public function showByKategori($id)
     {
-        $data_produk = Produk::where('id_kategori', $id)->get();
+        $data_produk = Produk::with('kategori')->where('id_kategori', $id)->get();
 		return $data_produk; //view('kategori.index', compact('data_kategori'));
     }
     
     public function showByNama($nama)
     {
-        $data_produk = Produk::where('nama_produk', 'LIKE', '%'.$nama.'%')->get();
+        $data_produk = Produk::with('kategori')->where('nama_produk', 'LIKE', '%'.$nama.'%')->get();
 		return $data_produk; 
     }
 
