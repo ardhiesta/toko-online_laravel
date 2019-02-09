@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKategoriProduksTable extends Migration
+class CreateKategoriProduk extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateKategoriProduksTable extends Migration
         Schema::create('kategori_produk', function (Blueprint $table) {
             $table->increments('id_kategori');
             $table->string('nama_kategori');
-            $table->timestamps();
+            $table->timestamps();       
         });
     }
 
