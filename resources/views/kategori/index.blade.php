@@ -15,6 +15,9 @@
 				<a href="{{action('KategoriProdukController@create')}}" class="btn btn-primary">Tambah Kategori</a>	
 			</div>
 			<div class="col-sm">
+				<a href="{{action('ProdukController@index')}}" >Produk</a>
+			</div>
+			<div class="col-sm">
 				{{ $data_kategori->links() }}
 			</div>
 		</div>
