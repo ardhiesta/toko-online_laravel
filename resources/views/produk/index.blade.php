@@ -14,6 +14,9 @@
 			<div class="col-sm">
 				<a href="{{action('ProdukController@create')}}" class="btn btn-primary">Tambah Produk</a>
 			</div>
+			<div class="col-sm">
+				<a href="{{action('KategoriProdukController@index')}}" >Kategori Produk</a>
+			</div>
 			<!-- <div class="col-sm">
 				<form action="/search" method="POST" role="search">
 					{{ csrf_field() }}
